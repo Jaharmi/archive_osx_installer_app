@@ -1,0 +1,63 @@
+#!/bin/zsh
+
+MATCHED_ITEM="${1}"
+INSTALLER_PATH="${MATCHED_ITEM}"
+INSTALLER_BASENAME=$(basename "${INSTALLER_PATH}")
+INSTALLER_NAME="${INSTALLER_BASENAME%%.*}"
+
+OSINSTALL_PATH="${INSTALLER_PATH}/Contents/SharedSupport/OSInstall.mpkg"
+DISTRIBUTION_FILE="Distribution"
+
+# Extract the Distribution file from the metapackage
+if [ -f "${OSINSTALL_PATH}" ] ; then
+    /bin/echo "Found path ${OSINSTALL_PATH}."
+    
+    xar -C /tmp/ -x "${DISTRIBUTION_FILE}" -f "${OSINSTALL_PATH}"
+    THIS_IS_CHAOS=$(openssl rand -hex 3)
+    DISTRIBUTION_FILE_SOURCE_PATH="/tmp/${DISTRIBUTION_FILE}"
+    DISTRIBUTION_FILE_DESTINATION_PATH="/tmp/${DISTRIBUTION_FILE}_${THIS_IS_CHAOS}"
+    mv "${DISTRIBUTION_FILE_SOURCE_PATH}" "${DISTRIBUTION_FILE_DESTINATION_PATH}"
+
+    if [ -f "${DISTRIBUTION_FILE_DESTINATION_PATH}" ] ; then
+        /bin/echo "Extracting installer version information from temporary Distribution file at path ${DISTRIBUTION_FILE_DESTINATION_PATH}."
+        
+        # Extract the ProductVersion and BuildVersion from the Distribution file
+        OS_PRODUCTVERSION=$(xmllint \
+            --xpath '//installer-gui-script/options/@osVersion' \
+            "${DISTRIBUTION_FILE_DESTINATION_PATH}" \
+            | cut -d "\"" -f 2)
+        #10.8.4
+        OS_BUILDVERSION=$(xmllint --xpath '//installer-gui-script/options/@osBuildVersion' "${DISTRIBUTION_FILE_DESTINATION_PATH}" | cut -d "\"" -f 2)
+        #12E55
+
+        # Delete the Distribution file, since it is no longer needed
+        rm -f "${DISTRIBUTION_FILE_DESTINATION_PATH}" \
+            && /bin/echo "Removed temporary Distribution file."
+
+        # Make a new temporary directory for the installer
+        INSTALLER_TEMP_FOLDER_NAME="${INSTALLER_NAME} ${OS_PRODUCTVERSION} ${OS_BUILDVERSION}"
+        INSTALLER_TEMP_FOLDER_PATH="/tmp/${INSTALLER_TEMP_FOLDER_NAME}"
+        if [ ! -d "${INSTALLER_TEMP_FOLDER_PATH}" ] ; then
+            mkdir -p "${INSTALLER_TEMP_FOLDER_PATH}" \
+                && /bin/echo "Created temporary folder for the installer."
+        else
+            /bin/echo "Temporary installer folder already exists at path ${INSTALLER_TEMP_FOLDER_PATH}."
+        fi
+
+        rsync -ae --silent "${INSTALLER_PATH}" "${INSTALLER_TEMP_FOLDER_PATH}/" \
+            && /bin/echo "Copied installer into ${INSTALLER_TEMP_FOLDER_PATH}."
+        
+        /bin/echo "Saving archived installer to /Users/Shared folder."
+        hdiutil \
+            create \
+            -srcfolder "${INSTALLER_TEMP_FOLDER_PATH}" \
+            -volname "${INSTALLER_TEMP_FOLDER_NAME}" \
+            -format UDZO \
+            "/Users/Shared/${INSTALLER_TEMP_FOLDER_NAME}.dmg" \
+            && /bin/echo "Disk image archive created at path /Users/Shared/${INSTALLER_TEMP_FOLDER_NAME}.dmg."
+        
+        if [ -d "${INSTALLER_TEMP_FOLDER_PATH}" ] ; then
+            rm -Rf "${INSTALLER_TEMP_FOLDER_PATH}" && /bin/echo "Cleaned up temporary installer folder from path ${INSTALLER_TEMP_FOLDER_PATH}."
+        fi
+    fi
+fi
