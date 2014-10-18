@@ -65,6 +65,14 @@ __Once the script is installed__, import the Hazel rule.
 1. Choose "Applications" as the folder to import the rules to when Hazel prompts you for that choice.
 
 
+Feedback
+--------
+
+If you encounter a problem, please submit an issue.
+
+In particular, the Hazel rule might be fiddly, as I find it hard to get those right when they include downloads. In this case, the download will also be updated — perhaps several times — later. I've tried to make it match correctly without making a new archive every time Hazel scans. YMMV.
+
+
 Version history
 ---------------
 
