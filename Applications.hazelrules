@@ -11,12 +11,12 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>91</integer>
+				<integer>105</integer>
 			</dict>
 			<key>options</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>89</integer>
+				<integer>103</integer>
 			</dict>
 			<key>rules</key>
 			<dict>
@@ -26,7 +26,7 @@
 			<key>version</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>90</integer>
+				<integer>104</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -47,12 +47,12 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>88</integer>
+				<integer>102</integer>
 			</dict>
 			<key>actions</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>76</integer>
+				<integer>90</integer>
 			</dict>
 			<key>criteria</key>
 			<dict>
@@ -773,22 +773,59 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
+				<integer>89</integer>
+			</dict>
+			<key>NSCompoundPredicateType</key>
+			<integer>2</integer>
+			<key>NSSubpredicates</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>66</integer>
+			</dict>
+			<key>predicateTarget</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>5</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>63</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>67</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>78</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
 				<integer>24</integer>
 			</dict>
 			<key>NSLeftExpression</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>66</integer>
+				<integer>68</integer>
 			</dict>
 			<key>NSPredicateOperator</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>74</integer>
+				<integer>76</integer>
 			</dict>
 			<key>NSRightExpression</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>71</integer>
+				<integer>73</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -800,7 +837,7 @@
 			<key>NSArguments</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>68</integer>
+				<integer>70</integer>
 			</dict>
 			<key>NSExpressionType</key>
 			<integer>3</integer>
@@ -812,7 +849,7 @@
 			<key>NSSelectorName</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>67</integer>
+				<integer>69</integer>
 			</dict>
 		</dict>
 		<string>valueForKey:</string>
@@ -826,7 +863,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>69</integer>
+					<integer>71</integer>
 				</dict>
 			</array>
 		</dict>
@@ -841,7 +878,7 @@
 			<key>NSKeyPath</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>70</integer>
+				<integer>72</integer>
 			</dict>
 		</dict>
 		<string>dateMatched</string>
@@ -854,7 +891,7 @@
 			<key>NSConstantValue</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>72</integer>
+				<integer>74</integer>
 			</dict>
 			<key>NSExpressionType</key>
 			<integer>0</integer>
@@ -863,7 +900,7 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>73</integer>
+				<integer>75</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -888,10 +925,57 @@
 			<key>NSSelectorName</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>75</integer>
+				<integer>77</integer>
 			</dict>
 		</dict>
 		<string>hazelIsEmpty:</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>24</integer>
+			</dict>
+			<key>NSLeftExpression</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>79</integer>
+			</dict>
+			<key>NSPredicateOperator</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>87</integer>
+			</dict>
+			<key>NSRightExpression</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>83</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>17</integer>
+			</dict>
+			<key>NSArguments</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>81</integer>
+			</dict>
+			<key>NSExpressionType</key>
+			<integer>3</integer>
+			<key>NSOperand</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>10</integer>
+			</dict>
+			<key>NSSelectorName</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>80</integer>
+			</dict>
+		</dict>
+		<string>valueForKey:</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -902,7 +986,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>77</integer>
+					<integer>82</integer>
 				</dict>
 			</array>
 		</dict>
@@ -910,44 +994,161 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>87</integer>
+				<integer>15</integer>
 			</dict>
-			<key>options</key>
+			<key>NSExpressionType</key>
+			<integer>10</integer>
+			<key>NSKeyPath</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>85</integer>
-			</dict>
-			<key>parameter</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>78</integer>
+				<integer>72</integer>
 			</dict>
 		</dict>
 		<dict>
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
+				<integer>17</integer>
+			</dict>
+			<key>NSArguments</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>85</integer>
+			</dict>
+			<key>NSExpressionType</key>
+			<integer>3</integer>
+			<key>NSOperand</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>10</integer>
+			</dict>
+			<key>NSSelectorName</key>
+			<dict>
+				<key>CF$UID</key>
 				<integer>84</integer>
+			</dict>
+		</dict>
+		<string>valueForKey:</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>16</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>86</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>15</integer>
+			</dict>
+			<key>NSExpressionType</key>
+			<integer>10</integer>
+			<key>NSKeyPath</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>51</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>88</integer>
+			</dict>
+			<key>NSModifier</key>
+			<integer>0</integer>
+			<key>NSOperatorType</key>
+			<integer>0</integer>
+			<key>NSOptions</key>
+			<integer>3</integer>
+			<key>NSVariant</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>$classes</key>
+			<array>
+				<string>NSComparisonPredicateOperator</string>
+				<string>NSPredicateOperator</string>
+				<string>NSObject</string>
+			</array>
+			<key>$classname</key>
+			<string>NSComparisonPredicateOperator</string>
+		</dict>
+		<dict>
+			<key>$classes</key>
+			<array>
+				<string>HazelCompoundPredicate</string>
+				<string>NSCompoundPredicate</string>
+				<string>NSPredicate</string>
+				<string>NSObject</string>
+			</array>
+			<key>$classname</key>
+			<string>HazelCompoundPredicate</string>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>16</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>91</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>101</integer>
+			</dict>
+			<key>options</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>99</integer>
+			</dict>
+			<key>parameter</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>92</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>98</integer>
 			</dict>
 			<key>bookmark</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>82</integer>
+				<integer>96</integer>
 			</dict>
 			<key>path</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>79</integer>
+				<integer>93</integer>
 			</dict>
 			<key>volumeIdentifier</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>80</integer>
+				<integer>94</integer>
 			</dict>
 			<key>volumeUUIDNotAvailable</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>81</integer>
+				<integer>95</integer>
 			</dict>
 		</dict>
 		<string>/usr/local/bin/archive_osx_installer_app</string>
@@ -957,7 +1158,7 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>83</integer>
+				<integer>97</integer>
 			</dict>
 			<key>NS.data</key>
 			<data>
@@ -11911,7 +12112,7 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>86</integer>
+				<integer>100</integer>
 			</dict>
 			<key>NS.keys</key>
 			<array/>
@@ -11951,7 +12152,7 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>86</integer>
+				<integer>100</integer>
 			</dict>
 			<key>NS.keys</key>
 			<array/>
