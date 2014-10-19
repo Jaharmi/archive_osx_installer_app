@@ -77,3 +77,4 @@ Version history
 ---------------
 
 0.9.0 - First public release
+0.9.1 - Update Hazel matching conditions to look for either no previous matches or a match that predates the latest modification to the OS X Install application
