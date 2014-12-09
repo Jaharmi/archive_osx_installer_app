@@ -27,7 +27,11 @@ if [ -f "${OSINSTALL_PATH}" ] ; then
             "${DISTRIBUTION_FILE_DESTINATION_PATH}" \
             | cut -d "\"" -f 2)
         #10.8.4
-        OS_BUILDVERSION=$(xmllint --xpath '//installer-gui-script/options/@osBuildVersion' "${DISTRIBUTION_FILE_DESTINATION_PATH}" | cut -d "\"" -f 2)
+
+        OS_BUILDVERSION=$(xmllint \
+            --xpath '//installer-gui-script/options/@osBuildVersion' \
+            "${DISTRIBUTION_FILE_DESTINATION_PATH}" \
+            | cut -d "\"" -f 2)
         #12E55
 
         # Delete the Distribution file, since it is no longer needed
