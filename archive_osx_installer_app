@@ -57,6 +57,7 @@ if [ -f "${OSINSTALL_PATH}" ] ; then
             -srcfolder "${INSTALLER_TEMP_FOLDER_PATH}" \
             -volname "${INSTALLER_TEMP_FOLDER_NAME}" \
             -format UDZO \
+            -imagekey zlib-level=9 \
             "/Users/Shared/${INSTALLER_TEMP_FOLDER_NAME}.dmg" \
             && /bin/echo "Disk image archive created at path /Users/Shared/${INSTALLER_TEMP_FOLDER_NAME}.dmg."
         
