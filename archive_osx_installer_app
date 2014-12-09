@@ -22,10 +22,29 @@ if [ -f "${OSINSTALL_PATH}" ] ; then
         /bin/echo "Extracting installer version information from temporary Distribution file at path ${DISTRIBUTION_FILE_DESTINATION_PATH}."
         
         # Extract the ProductVersion and BuildVersion from the Distribution file
-        OS_PRODUCTVERSION=$(xmllint \
+        OS_PRODUCTVERSION_EXTRACTED=$(xmllint \
             --xpath '//installer-gui-script/options/@osVersion' \
             "${DISTRIBUTION_FILE_DESTINATION_PATH}" \
             | cut -d "\"" -f 2)
+        # Determine if the product version has only two components
+        # by comparison with a regular expression pattern, "\d+\.\d+\.\d+"
+        # If it has only two components, the product version needs a trailing zero
+        /bin/echo "${OS_PRODUCTVERSION_EXTRACTED}" | /usr/bin/grep -q -E "\d+\.\d+\.\d+"
+        case $? in
+            0)
+                # Product version does not need a trailing zero
+                OS_PRODUCTVERSION="${OS_PRODUCTVERSION_EXTRACTED}"
+                ;;
+            1)
+                # First new OS release does not have a trailing zero in product version
+                # Add the trailing zero
+                OS_PRODUCTVERSION="${OS_PRODUCTVERSION_EXTRACTED}.0"
+                ;;
+            *)
+                # Something else happened, so add a trailing zero
+                OS_PRODUCTVERSION="${OS_PRODUCTVERSION_EXTRACTED}.0"
+                ;;
+        esac
         #10.8.4
 
         OS_BUILDVERSION=$(xmllint \
