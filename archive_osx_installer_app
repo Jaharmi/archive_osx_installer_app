@@ -41,6 +41,12 @@ if [ -f "${OSINSTALL_PATH}" ] ; then
         # Make a new temporary directory for the installer
         INSTALLER_TEMP_FOLDER_NAME="${INSTALLER_NAME} ${OS_PRODUCTVERSION} ${OS_BUILDVERSION}"
         INSTALLER_TEMP_FOLDER_PATH="/tmp/${INSTALLER_TEMP_FOLDER_NAME}"
+
+        /bin/echo "Detected installer app for OS X v${OS_PRODUCTVERSION} build ${OS_BUILDVERSION}."
+        /bin/echo "Preparing to archive ${INSTALLER_TEMP_FOLDER_NAME}."
+
+        sleep 4
+
         if [ ! -d "${INSTALLER_TEMP_FOLDER_PATH}" ] ; then
             mkdir -p "${INSTALLER_TEMP_FOLDER_PATH}" \
                 && /bin/echo "Created temporary folder for the installer."
