@@ -21,9 +21,9 @@ The Hazel rule detects when you have a new OS X Install application in the /Appl
 
 Then it pounces! Hazel runs the "archive\_osx\_installer\_app" script, which does _all_ of the heavy lifting.
 
-1. It determines the version number and build of OS X in the app (without using the entire InstallESD.dmg).
+1. It determines the version number and build of OS X in the app (without using the entire InstallESD.dmg). Short OS X version numbers are padded with ".0" so that they look and sort better alongside subsequent updates. Version "10.10" becomes "10.10.0."
 1. It copies the OS X Install app to a temporary folder. Please note that you'll want enough space for this — and for each OS X Install application that you currently have in /Applications, if you add the Hazel rule, below.
-1. It archives the temporary folder to a compressed disk image in /Users/Shared. (You know I dig [disk image compression](http://www.jaharmi.com/2007/01/18/compressed_mac_os_x_disk_image_statistics).) Again, this is making yet another copy, so you'll want enough disk space for that.
+1. It archives the temporary folder to a compressed disk image in /Users/Shared. (You know I dig [disk image compression](http://www.jaharmi.com/2007/01/18/compressed_mac_os_x_disk_image_statistics), so this image is compressed with Zlib level 9.) Again, this is making yet another copy, so you'll want enough disk space for that.
 1. It removes the temporary folder to free up space.
 
 Examples of actual disk images saved to /Users/Shared:
@@ -31,7 +31,7 @@ Examples of actual disk images saved to /Users/Shared:
 * Install Mac OS X Lion 10.7.3 11D50.dmg
 * Install OS X Mountain Lion 10.8.4 12E55.dmg
 * Install OS X Mavericks 10.9.3 13D65.dmg
-* Install OS X Yosemite 10.10 14A389.dmg
+* Install OS X Yosemite 10.10.0 14A389.dmg
 
 You may also run "archive\_osx\_installer_app" on its own, if you don't have Hazel, don't use Hazel, and/or don't want Hazel. The script takes one parameter, the path to the OS X Install app.
 
@@ -45,6 +45,8 @@ Examples:
 __A note on free disk space:__ as described above, if you import the Hazel rule, you will want enough free disk space on your particular system to comfortably make a copy and a disk image — a process which itself has disk space requirements — of that copy of each OS X Install application in your /Applications folder.
 
 __A note on the destination folder:__ I chose /Users/Shared on something of a whim. Afaik, I can only pass one parameter to the script from Hazel. You can move your disk images from that location, perhaps with another Hazel rule, if you so choose.
+
+__A note on interactive operation:__ You can run the script from the command line, giving it the path to an OS X Install app anywhere else, to archive that installer. This allows you to catch up on archiving your older installers without having to move them into /Applications one at a time to trigger the Hazel rule.
 
 
 Installation
@@ -88,3 +90,4 @@ Version history
 
 * 0.9.0 - First public release
 * 0.9.1 - Update Hazel matching conditions to look for either no previous matches or a match that predates the latest modification to the OS X Install application
+* 0.9.2 - Update script, with benefits for both Hazel and interactive operation. It now prints the detected OS X version and build. (After that, it pauses briefly to allow time to cancel the operation, which is useful when run interactively.) It compresses the output disk image with Zlib level 9 compression to save some disk space, since it's an archive. Finally, it pads short OS X version numbers with ".0" -- where "10.10" becomes "10.10.0" -- which makes major OS X releases look and sort better alongside subsequent updates.
