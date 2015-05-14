@@ -4,7 +4,7 @@ include /usr/local/share/luggage/luggage.make
 TITLE=Archive\ OS\ X\ installer\ application
 TITLE_NOSPACE=archive_osx_installer_app
 REVERSE_DOMAIN=com.github.jaharmi.pkg
-PACKAGE_VERSION=0.9.0
+PACKAGE_VERSION=0.9.2
 PACKAGE_ID=${REVERSE_DOMAIN}.${TITLE_NOSPACE}
 PACKAGE_NAME=${TITLE}
 PACKAGE_FILE=${PACKAGE_NAME}.pkg
