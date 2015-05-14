@@ -76,15 +76,38 @@ if [ -f "${OSINSTALL_PATH}" ] ; then
         rsync -ae --silent "${INSTALLER_PATH}" "${INSTALLER_TEMP_FOLDER_PATH}/" \
             && /bin/echo "Copied installer into ${INSTALLER_TEMP_FOLDER_PATH}."
         
-        /bin/echo "Saving archived installer to /Users/Shared folder."
-        hdiutil \
-            create \
-            -srcfolder "${INSTALLER_TEMP_FOLDER_PATH}" \
-            -volname "${INSTALLER_TEMP_FOLDER_NAME}" \
-            -format UDZO \
-            -imagekey zlib-level=9 \
-            "/Users/Shared/${INSTALLER_TEMP_FOLDER_NAME}.dmg" \
-            && /bin/echo "Disk image archive created at path /Users/Shared/${INSTALLER_TEMP_FOLDER_NAME}.dmg."
+        # Get the path and name for the archive file
+        INSTALLER_BACKUP_FOLDER_PATH="/Users/Shared/Install OS X Backup"
+        INSTALLER_BACKUP_DMG_NAME="${INSTALLER_TEMP_FOLDER_NAME}.dmg"
+        INSTALLER_BACKUP_DMG_PATH="{INSTALLER_BACKUP_FOLDER_PATH}/${INSTALLER_BACKUP_DMG_NAME}"
+
+        # If the backup folder does not exist, create it
+        if [ ! -d "${INSTALLER_BACKUP_FOLDER_PATH}" ] ; then
+            /bin/echo "Backup folder not found."
+            mkdir -p "${INSTALLER_BACKUP_FOLDER_PATH}" \
+                && /bin/echo "Created backup folder for OS X installer archives."
+        fi
+
+        # If the archive already exists, warn
+        # If the archive does not already exist, create it
+        if [ -f "${INSTALLER_BACKUP_DMG_PATH}" ] ; then
+            /bin/echo "Found existing archived installer at path ${INSTALLER_BACKUP_DMG_PATH}."
+            /bin/echo "It is possible that the OS X Installer application was updated in place " \
+                "and the OSInstall.mpkg was not updated to reflect the new version."
+            /bin/echo "If so, delete the OS X Installer app and re-download it."
+            # In the future, resort to getting the version number
+            # from the InstallESD.dmg in this scenario only
+        else
+            /bin/echo "Saving archived installer to \"${INSTALLER_BACKUP_FOLDER_PATH}\" folder."
+            hdiutil \
+                create \
+                -srcfolder "${INSTALLER_TEMP_FOLDER_PATH}" \
+                -volname "${INSTALLER_TEMP_FOLDER_NAME}" \
+                -format UDZO \
+                -imagekey zlib-level=9 \
+                "${INSTALLER_BACKUP_DMG_PATH}" \
+                && /bin/echo "Disk image archive created at path ${INSTALLER_BACKUP_DMG_PATH}."
+        fi
         
         if [ -d "${INSTALLER_TEMP_FOLDER_PATH}" ] ; then
             rm -Rf "${INSTALLER_TEMP_FOLDER_PATH}" && /bin/echo "Cleaned up temporary installer folder from path ${INSTALLER_TEMP_FOLDER_PATH}."
