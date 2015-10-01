@@ -79,7 +79,7 @@ if [ -f "${OSINSTALL_PATH}" ] ; then
         # Get the path and name for the archive file
         INSTALLER_BACKUP_FOLDER_PATH="/Users/Shared/Install OS X Backup"
         INSTALLER_BACKUP_DMG_NAME="${INSTALLER_TEMP_FOLDER_NAME}.dmg"
-        INSTALLER_BACKUP_DMG_PATH="{INSTALLER_BACKUP_FOLDER_PATH}/${INSTALLER_BACKUP_DMG_NAME}"
+        INSTALLER_BACKUP_DMG_PATH="${INSTALLER_BACKUP_FOLDER_PATH}/${INSTALLER_BACKUP_DMG_NAME}"
 
         # If the backup folder does not exist, create it
         if [ ! -d "${INSTALLER_BACKUP_FOLDER_PATH}" ] ; then
